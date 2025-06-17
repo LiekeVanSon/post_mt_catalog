@@ -1,4 +1,5 @@
 import json
+import numpy as np
 
 
 def read_json_file(file_path):
@@ -19,6 +20,14 @@ def main():
         if data:
             print("Sample entry:")
             print(json.dumps(data[0], indent=2))
+
+    # Make arrays of the data
+    system_name = [entry["System Name"] for entry in data]
+    m1 = np.array([entry["M1"] for entry in data])
+
+    print(system_name)
+    print(m1)
+    print(m1[:, 0])
 
 
 if __name__ == "__main__":
