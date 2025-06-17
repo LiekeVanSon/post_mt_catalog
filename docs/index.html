@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post Mass Transfer Review</title>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; color: #222; }
+    header { background: #2d3e50; color: #fff; padding: 2rem 1rem 1rem 1rem; text-align: center; }
+    nav { margin: 1rem 0; }
+    nav a { color: #2d3e50; margin: 0 1rem; text-decoration: none; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
+    section { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #0001; padding: 2rem; }
+    h2 { border-bottom: 1px solid #eee; padding-bottom: 0.5rem; }
+    img.plot { max-width: 100%; display: block; margin: 1rem auto; border: 1px solid #ccc; border-radius: 4px; }
+    code, pre { background: #f4f4f4; border-radius: 4px; padding: 2px 6px; }
+    footer { text-align: center; color: #888; margin: 2rem 0 1rem 0; font-size: 0.9em; }
+    @media (max-width: 600px) { section { padding: 1rem; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Post Mass Transfer Review</h1>
+    <p>A collaborative project to catalog and analyze post-mass transfer binary systems.</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#data">Data Structure</a>
+      <a href="#results">Results</a>
+      <a href="#plots">Plots</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>This project aims to provide a comprehensive catalog and analysis of post-mass transfer binary systems, including their key properties and observational data. The data is structured for easy analysis and reproducibility, supporting the astrophysics community in understanding binary evolution.</p>
+  </section>
+
+  <section id="data">
+    <h2>Data Structure</h2>
+    <p>All systems are stored in a table with the following columns (with key quantities as <code>[err-, value, err+]</code> triplets):</p>
+    <pre><code>System Name, RA, Dec, Period, Eccentricity, M1, M1_sin3i, M2, M2_sin3i, q, Mass Function, Type1, Type2, Detection Method, Reference, Notes</code></pre>
+    <p>Example entry:</p>
+    <pre><code>{
+  "System Name": "Example system",
+  "RA": [0.005, 150.025, 0.005],
+  "Dec": [0.004, -45.123, 0.004],
+  "Period": [0.2, 12.5, 0.3],
+  "Eccentricity": [0.02, 0.30, 0.03],
+  "M1": [0.5, 5.0, 0.5],
+  ...
+}</code></pre>
+    <p>Missing values are represented as <code>np.nan</code>. Lower/upper limits are handled using the <code>M1_sin3i</code> and <code>M2_sin3i</code> columns.</p>
+  </section>
+
+  <section id="results">
+    <h2>Results</h2>
+    <p>Processed tables and data products are available in the <code>result_tables/</code> directory. Each file contains results for different post-mass transfer systems. See the project repository for details.</p>
+  </section>
+
+  <section id="plots">
+    <h2>Plots</h2>
+    <img src="../plots/Period_vs_Eccentricity.png" alt="Period vs Eccentricity" class="plot">
+    <img src="../plots/Period_vs_M2.png" alt="Period vs M2" class="plot">
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>For questions or contributions, please open an issue or pull request on the <a href="https://github.com/LiekeVanSon/post_mt_review">GitHub repository</a>.</p>
+  </section>
+
+  <footer>
+    &copy; 2025 XXX &amp; Collaborators. Powered by GitHub Pages.
+  </footer>
+</body>
+</html> 
