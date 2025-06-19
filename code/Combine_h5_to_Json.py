@@ -3,15 +3,24 @@ import h5py
 import json
 from io import StringIO
 import os
+import argparse
 
 # === CONFIGURATION ===
+# Set up argument parser
+parser = argparse.ArgumentParser(description="Combine post-mass-transfer system tables into a single JSON file.")
+parser.add_argument("input_h5_path", type=str, help="Path to the directory containing .h5 files.",default="../result_tables")
+parser.add_argument("output_json_path", type=str, help="Path to save the combined JSON output. (must include outp filename)",  default="../data/post_mt_systems.json")
+args = parser.parse_args()
+
+# Use parsed arguments
+input_h5_path = args.input_h5_path
+output_json_path = args.output_json_path
+
 triplet_cols = ["RA", "Dec", "Period", "Eccentricity", "M1", "M1_sin3i", "M2", "M2_sin3i", "q", "Mass Function"]
-base_path = "../result_tables"
-output_json_path = "../data/post_mt_systems.json"
 
 # === COLLECT FILES ===
 list_of_tables = []
-for root, dirs, files in os.walk(base_path):
+for root, dirs, files in os.walk(input_h5_path):
     for file in files:
         if file.endswith(".h5") or file.endswith(".hdf5"):
             list_of_tables.append(os.path.join(root, file))
